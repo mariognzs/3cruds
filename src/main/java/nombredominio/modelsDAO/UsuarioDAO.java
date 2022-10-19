@@ -21,12 +21,10 @@ public class UsuarioDAO {
 
 	Usuario usuario = new Usuario();
 	ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-	
-
 
 	public Usuario save(Usuario usuario) {
-		String sql = "INSERT INTO usuarios (nombre, email,password) VALUES ('"+
-				usuario.getNombre() + "', '"+ usuario.getEmail()+"', '"+ usuario.getPassword()+"')";
+		String sql = "INSERT INTO usuarios (nombre, email,password) VALUES ('" + usuario.getNombre() + "', '"
+				+ usuario.getEmail() + "', '" + usuario.getPassword() + "')";
 		try {
 			conn = conexion.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -36,7 +34,7 @@ public class UsuarioDAO {
 		}
 
 		return usuario;
-	
+
 	}
 
 	public boolean delete(int id_usuario) {
@@ -49,18 +47,26 @@ public class UsuarioDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return true;
 	}
 
 	public Usuario update(Usuario usuario) {
-		String sql = "UPDATE usuarios SET nombre = '" + usuario.getNombre() + "', email = '" + usuario.getEmail()
-				+ "', password = '" + usuario.getPassword() + "' WHERE id_usuario =" + usuario.getId_usuario();
+		String sql;
+		if(usuario.getPassword() != null) {
+			sql = "UPDATE usuarios SET nombre = '" + usuario.getNombre() + "', email = '" + usuario.getEmail()
+			+ "', password = '" + usuario.getPassword() + "' WHERE id_usuario =" + usuario.getId_usuario();
+		}else {
+			sql = "UPDATE usuarios SET nombre = '" + usuario.getNombre() + "', email = '" + usuario.getEmail()
+			+ "' WHERE id_usuario =" + usuario.getId_usuario();
+		}
+		
+
 		try {
 			conn = conexion.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.executeUpdate();	
-			
+			ps.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -93,7 +99,9 @@ public class UsuarioDAO {
 	}
 
 	public ArrayList<Usuario> all() {
-		String sql = "Select * from usuarios";
+		String sql = "SELECT * FROM usuarios";
+		usuarios = new ArrayList<Usuario>();
+
 
 		try {
 
@@ -120,13 +128,13 @@ public class UsuarioDAO {
 
 	public boolean validate(String email, String password) {
 		String sql = "SELECT * FROM usuarios where email = '" + email + "' AND password = '" + password + "'";
-		
+
 		try {
 			conn = conexion.getConnection();
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				return true;
 			}
 		} catch (SQLException e) {
@@ -138,18 +146,18 @@ public class UsuarioDAO {
 
 	public Usuario getUsuario(String email, String password) {
 		String sql = "SELECT * FROM usuarios where email = '" + email + "' AND password = '" + password + "'";
-		
+
 		try {
 			conn = conexion.getConnection();
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				usuario.setId_usuario(rs.getInt("id_usuario"));
 				usuario.setNombre(rs.getString("nombre"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setPassword(rs.getString("password"));
-				
+
 				return usuario;
 			}
 		} catch (SQLException e) {

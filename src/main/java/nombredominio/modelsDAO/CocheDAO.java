@@ -42,8 +42,8 @@ public class CocheDAO {
 		return coche;
 	}
 
-	public boolean delete(int id) {
-		String sql = "DELETE FROM coches WHERE id = " + id;
+	public boolean delete(int id_coche) {
+		String sql = "DELETE FROM coches WHERE id_coche = " + id_coche;
 
 		try {
 			conn = conexion.getConnection();
@@ -59,7 +59,7 @@ public class CocheDAO {
 
 	public Coche update(Coche coche) {
 		String sql = "UPDATE coches SET nombre = '" + coche.getNombre() + "', marca = '" + coche.getMarca()
-				+ "', precio = '" + coche.getPrecio() + "' WHERE id=" + coche.getId();
+				+ "', precio = '" + coche.getPrecio() + "' WHERE id_coche=" + coche.getId_coche();
 		try {
 			conn = conexion.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -72,8 +72,8 @@ public class CocheDAO {
 
 	}
 
-	public Coche buscarCoches(int id) {
-		String sql = "Select * from coches where id = " + id;
+	public Coche find(int id_coche) {
+		String sql = "Select * from coches where id = " + id_coche;
 
 		try {
 
@@ -82,7 +82,7 @@ public class CocheDAO {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				coche.setId(rs.getInt("id"));
+				coche.setId_coche(rs.getInt("id_coche"));
 				coche.setNombre(rs.getString("nombre"));
 				coche.setMarca(rs.getString("marca"));
 				coche.setPrecio(rs.getInt("precio"));
@@ -106,7 +106,7 @@ public class CocheDAO {
 			while (rs.next()) {
 				coche = new Coche();
 
-				coche.setId(rs.getInt("id"));
+				coche.setId_coche(rs.getInt("id_coche"));
 				coche.setNombre(rs.getString("nombre"));
 				coche.setMarca(rs.getString("marca"));
 				coche.setPrecio(rs.getInt("precio"));
@@ -120,4 +120,32 @@ public class CocheDAO {
 		return coches;
 	}
 
+	public ArrayList<Coche> all(){
+		String sql = "SELECT * FROM coches";
+		coches = new ArrayList<Coche>();
+		
+		try {
+			conn = conexion.getConnection();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				coche = new Coche();
+				
+				coche.setId_coche(rs.getInt("id_coche"));
+				coche.setMarca(rs.getString("nombre"));
+				coche.setNombre(rs.getString("email"));
+				coche.setPrecio(rs.getInt("precio"));
+				
+				coches.add(coche);
+			}
+			
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	return coches;
+	
+	}
+	
 }

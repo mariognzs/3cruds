@@ -10,6 +10,8 @@ import nombredominio.models.Usuario;
 import nombredominio.modelsDAO.UsuarioDAO;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 
 public class UsuariosController extends HttpServlet {
@@ -39,7 +41,8 @@ public class UsuariosController extends HttpServlet {
 		switch (action) {
 		case "index":
 			usuarios  = usuarioDAO.all();
-			request.setAttribute("user", usuarios);
+			request.setAttribute("usu", usuarios);
+			//request.setAttribute("clase", "Somos de 2DAW");
 			acceso = index;
 			break;
 
@@ -90,7 +93,7 @@ public class UsuariosController extends HttpServlet {
 			usuario = new Usuario();
 			usuario.setNombre(nombre);
 			usuario.setEmail(email);
-			usuario.setPassword(password);
+			usuario.setPassword(getMD5(password));
 			
 			usuarioDAO.save(usuario);
 			
@@ -99,17 +102,18 @@ public class UsuariosController extends HttpServlet {
 			
 
 		case "update":
-			System.out.println("asdasds"+id_usuario);
 			id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
 			nombre = request.getParameter("nombre");
 			email = request.getParameter("email");
 			password = request.getParameter("password");
-			System.out.println(id_usuario);
+
 			usuario = new Usuario();
 			usuario.setId_usuario(id_usuario);
 			usuario.setNombre(nombre);
 			usuario.setEmail(email);
-			usuario.setPassword(password);
+			if(password != "") {
+				usuario.setPassword(getMD5(password));
+			}
 			
 			usuarioDAO.update(usuario);
 			
@@ -123,5 +127,33 @@ public class UsuariosController extends HttpServlet {
 		RequestDispatcher vista  = request.getRequestDispatcher(acceso);
 		vista.forward(request,response);
 	}
+	
+	public String getMD5 (String input) {
+
+        try {
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            byte [] encBytes = md.digest(input.getBytes());
+
+            BigInteger numero = new BigInteger(1,encBytes);
+
+            String encString = numero.toString(16);
+
+            while(encString.length() < 32) {
+
+                encString = "0" + encString;
+
+            }
+
+            return encString;
+
+        } catch (Exception e) {
+
+            throw new RuntimeException(e);
+
+        }
+
+    }
 
 }

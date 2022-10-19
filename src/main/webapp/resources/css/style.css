@@ -1,0 +1,39 @@
+/* Medidas */
+/* PC = > 941px*/
+/* TABLET = 769px < 940px */
+/* MOVIL = < 767px */
+html{
+    max-width: 941px;
+
+}
+
+
+#contenedor{
+	background-color:aquamarine;
+    margin: 0;
+    display:grid;
+    grid-template-columns: repeat(3,auto);
+    grid-template-rows: repeat(12,auto);
+    grid-gap: 20px;
+}
+
+nav li{
+    text-decoration: none;
+    display: inline;
+    text-align: center;
+}
+
+
+#header{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: span 2;
+    background-color: black;
+}
+
+#videoContenedor{
+    grid-column-start: 1;
+    grid-column-end: 10;
+    grid-row-start: 5;
+}
+

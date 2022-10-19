@@ -28,10 +28,24 @@ public class CochesController extends HttpServlet {
 	String index = "coches/index.jsp";
 	String create = "coches/create.jsp";
 	String edit = "coches/edit.jsp";
+	
+	ArrayList<Coche> coches;
+	
+	int id_coche;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		acceso = "";
+		action = request.getParameter("action");
+		
+		switch(action) {
+		case "index":
+			coches = cocheDAO.all();
+			request.setAttribute("coc", coches);
+			acceso = index;
+			break;
+		}
+	
+	
 	}
 
 
