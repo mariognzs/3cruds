@@ -9,10 +9,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>INDEX COCHES</title>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
-	<h1>USUARIOS INDEX</h1>
-	<a href="CochesController?action=create">Crear usuario</a>
+
+	<h1>COCHES INDEX</h1>
+	<a href="CochesController?action=create">Crear Coche</a>
 	<table border="1">
 		<thead>
 			<tr>
@@ -33,7 +35,6 @@
 			for (int i = 0; i < coches.size(); i++) {
 				Coche coche = coches.get(i);
 			%>
-
 			<tr>
 				<td><%=coche.getId_coche()%></td>
 				<td><%=coche.getNombre()%></td>
@@ -49,14 +50,7 @@
 			<%
 			}
 			%>
-
-
 		</tbody>
-
-
 	</table>
-
-
-
 </body>
 </html>

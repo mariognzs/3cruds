@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class UsuariosController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	String acceso; // Variable que distingue entre las vistas a las que tengo que redireccionar
-	String action; // Variable que recibo por URL y que me enlaza con el metodo/vista correspondiente
+	String acceso; 
+	String action; 
 	
 	Usuario usuario;
 	UsuarioDAO usuarioDAO = new UsuarioDAO();

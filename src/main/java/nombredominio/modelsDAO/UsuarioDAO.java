@@ -23,7 +23,7 @@ public class UsuarioDAO {
 	ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
 	public Usuario save(Usuario usuario) {
-		String sql = "INSERT INTO usuarios (nombre, email,password) VALUES ('" + usuario.getNombre() + "', '"
+		String sql = "INSERT INTO usuarios (nombre,email,password) VALUES ('" + usuario.getNombre() + "', '"
 				+ usuario.getEmail() + "', '" + usuario.getPassword() + "')";
 		try {
 			conn = conexion.getConnection();
@@ -166,4 +166,7 @@ public class UsuarioDAO {
 		}
 		return null;
 	}
+	
+	
+	
 }

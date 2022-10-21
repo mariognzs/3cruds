@@ -20,15 +20,16 @@ public class CocheDAO {
 	private ResultSet rs;
 	Statement statement;
 
-	private Coche coche = new Coche();
-	private ArrayList<Coche> coches = new ArrayList<Coche>();
+	Coche coche = new Coche();
+	
+	ArrayList<Coche> coches = new ArrayList<Coche>();
 
 	/*
 	 * public boolean crear() { return true; }
 	 */
 
 	public Coche save(Coche coche) {
-		String sql = "INSERT INTO coches (nombre, marca,precio) VALUES ('" + coche.getNombre() + "', '"
+		String sql = "INSERT INTO coches (nombre,marca,precio) VALUES ('" + coche.getNombre() + "', '"
 				+ coche.getMarca() + "', '" + coche.getPrecio() + "')";
 
 		try {
@@ -68,12 +69,13 @@ public class CocheDAO {
 			e.printStackTrace();
 		}
 
+		
 		return coche;
 
 	}
 
 	public Coche find(int id_coche) {
-		String sql = "Select * from coches where id = " + id_coche;
+		String sql = "Select * from coches where id_coche = " + id_coche;
 
 		try {
 
@@ -85,7 +87,8 @@ public class CocheDAO {
 				coche.setId_coche(rs.getInt("id_coche"));
 				coche.setNombre(rs.getString("nombre"));
 				coche.setMarca(rs.getString("marca"));
-				coche.setPrecio(rs.getInt("precio"));
+				coche.setPrecio(rs.getString("precio"));
+				return coche;
 			}
 
 		} catch (SQLException e) {
@@ -109,7 +112,7 @@ public class CocheDAO {
 				coche.setId_coche(rs.getInt("id_coche"));
 				coche.setNombre(rs.getString("nombre"));
 				coche.setMarca(rs.getString("marca"));
-				coche.setPrecio(rs.getInt("precio"));
+				coche.setPrecio(rs.getString("precio"));
 
 				coches.add(coche);
 			}
@@ -133,9 +136,9 @@ public class CocheDAO {
 				coche = new Coche();
 				
 				coche.setId_coche(rs.getInt("id_coche"));
-				coche.setMarca(rs.getString("nombre"));
-				coche.setNombre(rs.getString("email"));
-				coche.setPrecio(rs.getInt("precio"));
+				coche.setNombre(rs.getString("nombre"));
+				coche.setMarca(rs.getString("marca"));
+				coche.setPrecio(rs.getString("precio"));
 				
 				coches.add(coche);
 			}

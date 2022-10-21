@@ -5,13 +5,13 @@ public class Coche{
 	private int id_coche;
 	private String nombre;
 	private String marca;
-	private int precio;
+	private String precio;
 	
 	public Coche(){
 		
 	}
 
-	public Coche(int id_coche, String nombre, String marca, int precio) {
+	public Coche(int id_coche, String nombre, String marca, String precio) {
 		this.id_coche = id_coche;
 		this.nombre = nombre;
 		this.marca = marca;
@@ -43,11 +43,11 @@ public class Coche{
 		this.marca = marca;
 	}
 
-	public int getPrecio() {
+	public String getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(int precio) {
+	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
 	

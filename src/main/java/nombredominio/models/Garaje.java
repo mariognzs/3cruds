@@ -2,56 +2,42 @@ package nombredominio.models;
 
 public class Garaje{
 	
-	private int id;
-	private String nombre;
-	private int capacidad;
-	private int sitiosOcupados;
+	private int id_garaje;
+	private String capacidad;
+	private String sitiosOcupados;
 	
 	public Garaje() {
 		
 	}
 
-	public Garaje(int id, String nombre, int capacidad, int sitiosOcupados) {
-		this.id = id;
-		this.nombre = nombre;
+	public Garaje(int id_garaje, String capacidad, String sitiosOcupados) {
+		this.id_garaje = id_garaje;
 		this.capacidad = capacidad;
 		this.sitiosOcupados = sitiosOcupados;
 	}
 
-	public int getId() {
-		return id;
+	public int getId_garaje() {
+		return id_garaje;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId_garaje(int id_garaje) {
+		this.id_garaje = id_garaje;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public int getCapacidad() {
+	public String getCapacidad() {
 		return capacidad;
 	}
 
-	public void setCapacidad(int capacidad) {
+	public void setCapacidad(String capacidad) {
 		this.capacidad = capacidad;
 	}
 
-	public int getSitiosOcupados() {
+	public String getSitiosOcupados() {
 		return sitiosOcupados;
 	}
 
-	public void setSitiosOcupados(int sitiosOcupados) {
+	public void setSitiosOcupados(String sitiosOcupados) {
 		this.sitiosOcupados = sitiosOcupados;
 	}
-	
-	
-	
-	
 	
 }

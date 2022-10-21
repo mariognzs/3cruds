@@ -9,6 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>EDIT USUARIO</title>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
 	<h1>USUARIO EDIT</h1>
@@ -24,8 +25,7 @@
 
 	<form method="POST" action="UsuariosController?action=update">
 
-		<input type="hidden" name="id_usuario"
-			value="<%=usuario.getId_usuario()%>">
+		<input type="hidden" name="id_usuario"value="<%=usuario.getId_usuario()%>">
 		<h3>Name</h3>
 		<input type="text" name="nombre" value="<%=usuario.getNombre()%>">
 		<h3>Email</h3>
