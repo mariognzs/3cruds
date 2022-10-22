@@ -13,29 +13,23 @@
 	<!--------------- CABECERA -------------------------------->
 	<header>
 		<div id="header">
-			<nav class=".alinearVertical">
+			<nav>
 				<div>
-					<a href="home.jsp"><img src="resources/img/logo.jpg"
+					<a href="index.jsp"><img src="resources/img/logo.jpg"
 						height="100px"></a>
 				</div>
 				<div>
-					<ul>
-						<li><a href="home.jsp">INICIO</a></li>
-						<li><a href="UsuariosController?action=index">USUARIOS </a></li>
-						<li><a href="CochesController?action=index">COCHES</a></li>
-						<li><a href="GarajesController?action=index">GARAJE</a></li>
-						<li>|</li>
-						<%
-						Usuario usuario = new Usuario();
-						usuario = (Usuario) request.getSession().getAttribute("usuario");
-						%>
-						<img class="icon" src="resources/img/login.svg">
-						<li style="color: red;"><%=usuario.getNombre()%></li>
-						<img class="icon" src="resources/img/logout.svg">
-						<li><a href="AuthController?action=logout">CERRAR SESSION</a></li>
-
-					</ul>
+					<h1 class="letraGrande">- SPORTS AUTO -</h1>
 				</div>
+				<div>
+					<div>
+						<ul>
+							<img class="icon" src="resources/img/login.svg">
+							<li><a href="login.jsp">LOGIN</a></li>
+							<img class="icon" src="resources/img/register.svg">
+							<li><a href="register.jsp">REGISTER</a></li>
+						</ul>
+					</div>
 			</nav>
 			<hr>
 		</div>
@@ -44,8 +38,8 @@
 
 	<div id="contenedorTablas">
 		<div class="tablas">
-			<h1>USUARIOS CREATE</h1>
-			<form method="POST" action="UsuariosController?action=create">
+			<h1>REGISTER</h1>
+			<form method="POST" action="UsuariosController?action=regiter">
 
 				<input type="hidden" name="id_usuario">
 				<h3>Nombre:</h3>

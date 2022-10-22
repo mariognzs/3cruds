@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import nombredominio.config.Conexion;
-import nombredominio.models.Coche;
 import nombredominio.models.Garaje;
 
 public class GarajeDAO {
@@ -25,8 +24,9 @@ public class GarajeDAO {
 	ArrayList<Garaje> garajes = new ArrayList<Garaje>();
 
 	public Garaje save(Garaje garaje) {
-		String sql = "INSERT INTO coches (capacidad,sitiosOcupados) VALUES ('" + garaje.getCapacidad() + "', '"
-				+ garaje.getSitiosOcupados() + "')";
+		String sql = "INSERT INTO garajes (capacidad,sitiosOcupados,usuario_id,coche_id) VALUES ('"
+				+ garaje.getCapacidad() + "', '" + garaje.getSitiosOcupados() + "', '" + garaje.getUsuario_id() + "','"
+				+ garaje.getCoche_id() + "')";
 
 		try {
 			conn = conexion.getConnection();
@@ -40,7 +40,7 @@ public class GarajeDAO {
 	}
 
 	public boolean delete(int id_garaje) {
-		String sql = "DELETE FROM coches WHERE id_garaje = " + id_garaje;
+		String sql = "DELETE FROM garajes WHERE id_garaje = " + id_garaje;
 
 		try {
 			conn = conexion.getConnection();
@@ -56,7 +56,8 @@ public class GarajeDAO {
 
 	public Garaje update(Garaje garaje) {
 		String sql = "UPDATE garajes SET capacidad = '" + garaje.getCapacidad() + "', sitiosOcupados = '"
-				+ garaje.getSitiosOcupados() + "' WHERE id_garaje=" + garaje.getId_garaje();
+		+ garaje.getSitiosOcupados() + "', usuario_id = '" + garaje.getUsuario_id() + "', coche_id = '" +
+				garaje.getCoche_id() + "' WHERE id_garaje=" + garaje.getId_garaje();
 		try {
 			conn = conexion.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -70,7 +71,7 @@ public class GarajeDAO {
 	}
 
 	public Garaje find(int id_garaje) {
-		String sql = "Select * from garajes where id_coche = " + id_garaje;
+		String sql = "Select * from garajes where id_garaje = " + id_garaje;
 
 		try {
 
@@ -81,7 +82,10 @@ public class GarajeDAO {
 			while (rs.next()) {
 				garaje.setId_garaje(rs.getInt("id_garaje"));
 				garaje.setCapacidad(rs.getString("capacidad"));
-				garaje.setSitiosOcupados(rs.getString("precio"));
+				garaje.setSitiosOcupados(rs.getString("sitiosOcupados"));
+				garaje.setUsuario_id(rs.getString("usuario_id"));
+				garaje.setCoche_id(rs.getString("coche_id"));
+
 				return garaje;
 			}
 
@@ -92,7 +96,7 @@ public class GarajeDAO {
 	}
 
 	public ArrayList<Garaje> getGaraje() {
-		String sql = "Select * from garaje";
+		String sql = "Select * from garajes";
 
 		try {
 
@@ -106,6 +110,8 @@ public class GarajeDAO {
 				garaje.setId_garaje(rs.getInt("id_garaje"));
 				garaje.setCapacidad(rs.getString("capacidad"));
 				garaje.setSitiosOcupados(rs.getString("precio"));
+				garaje.setUsuario_id(rs.getString("usuario_id"));
+				garaje.setCoche_id(rs.getString("coche_id"));
 
 				garajes.add(garaje);
 			}
@@ -130,7 +136,10 @@ public class GarajeDAO {
 
 				garaje.setId_garaje(rs.getInt("id_garaje"));
 				garaje.setCapacidad(rs.getString("capacidad"));
-				garaje.setSitiosOcupados(rs.getString("precio"));
+				garaje.setSitiosOcupados(rs.getString("sitiosOcupados"));
+				garaje.setUsuario_id(rs.getString("usuario_id"));
+				garaje.setCoche_id(rs.getString("coche_id"));
+
 
 				garajes.add(garaje);
 			}

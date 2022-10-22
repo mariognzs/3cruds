@@ -8,10 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import nombredominio.models.Coche;
 import nombredominio.models.Garaje;
 import nombredominio.modelsDAO.GarajeDAO;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -23,7 +21,7 @@ public class GarajesController extends HttpServlet {
 	Garaje garaje;
 	GarajeDAO garajeDAO = new GarajeDAO();
 	
-	String capacidad, sitiosOcupados;
+	String capacidad, sitiosOcupados,usuario_id,coche_id;
 	
 	String index = "garajes/index.jsp";
 	String create = "garajes/create.jsp";
@@ -78,12 +76,16 @@ public class GarajesController extends HttpServlet {
 		
 		switch(action) {
 			case "create":
-				capacidad = request.getParameter("marca");
+				capacidad = request.getParameter("capacidad");
 				sitiosOcupados = request.getParameter("sitiosOcupados");
+				usuario_id = request.getParameter("usuario_id");
+				coche_id = request.getParameter("coche_id");
 				
 				garaje = new Garaje();
 				garaje.setCapacidad(capacidad);
 				garaje.setSitiosOcupados(sitiosOcupados);
+				garaje.setUsuario_id(usuario_id);
+				garaje.setCoche_id(coche_id);
 				
 				garajeDAO.save(garaje);
 				
@@ -94,11 +96,17 @@ public class GarajesController extends HttpServlet {
 				id_garaje = Integer.parseInt(request.getParameter("id_garaje"));
 				capacidad = request.getParameter("capacidad");
 				sitiosOcupados = request.getParameter("sitiosOcupados");
+				usuario_id = request.getParameter("usuario_id");
+				coche_id = request.getParameter("coche_id");
+
 				
 				garaje = new Garaje();
 				garaje.setId_garaje(id_garaje);
 				garaje.setCapacidad(capacidad);
 				garaje.setSitiosOcupados(sitiosOcupados);
+				garaje.setUsuario_id(usuario_id);
+				garaje.setCoche_id(coche_id);
+
 				
 				garajeDAO.update(garaje);
 				acceso = index;

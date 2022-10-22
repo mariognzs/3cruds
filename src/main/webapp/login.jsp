@@ -13,19 +13,13 @@
 	<!-- NAV -->
 	<header>
 		<div id="header">
-			<nav class=".alinearVertical">
+			<nav>
 				<div>
 					<a href="index.jsp"><img src="resources/img/logo.jpg"
 						height="100px"></a>
 				</div>
 				<div>
 					<ul>
-						<li><a href="index.jsp">INICIO</a></li>
-						<li><a href="UsuariosController?action=index">USUARIOS
-								INDEX</a></li>
-						<li><a href="CochesController?action=index">COCHES</a></li>
-						<li><a href="garaje.jsp">GARAJE</a></li>
-						<li>|</li>
 						<img class="icon" src="resources/img/login.svg">
 						<li><a href="login.jsp">LOGIN</a></li>
 						<img class="icon" src="resources/img/register.svg">
@@ -36,17 +30,21 @@
 			<hr>
 		</div>
 	</header>
+	
 	<div id="formulario">
 		<form method="POST" action="AuthController?action=login">
-			<div id="contenedorForm"> 
-				<p>Email:</p>
-				<input type="email" name="email"> <br>
-				<p>Password:</p>
-				<input type="text" name="password"> <br>
-				<button type="submit">Enviar</button>
+			<div id="contenedorForm">
+				<div id="bordeLogin" style="border: 1px solid white;" class="border">
+					<h3>Email:</h3>
+					<input type="email" name="email" placeholder="Tu correo ..."> <br>
+					<h3>Password:</h3>
+					<input type="text" name="password" placeholder="Tu contrasena ..."> <br>
+					<button type="submit">Enviar</button>
+				</div>
 			</div>
 		</form>
 	</div>
+
 	<footer>
 		<hr>
 		<address>Copyright &#169 garajesEmpresa</address>
@@ -57,8 +55,6 @@
 				href="#"><img src="resources/img/logoWhatsApp.png"></a>
 		</div>
 	</footer>
-
-
 
 </body>
 </html>

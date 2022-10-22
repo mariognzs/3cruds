@@ -28,6 +28,7 @@ public class UsuariosController extends HttpServlet {
 	String index = "usuarios/index.jsp";
 	String create = "usuarios/create.jsp";
 	String edit = "usuarios/edit.jsp";
+	String index2 = "login.jsp";
 	
 	ArrayList<Usuario> usuarios;
 	
@@ -85,6 +86,21 @@ public class UsuariosController extends HttpServlet {
 		action = request.getParameter("action");
 
 		switch (action) {
+		case "regiter":
+			nombre = request.getParameter("nombre");
+			email = request.getParameter("email");
+			password = request.getParameter("password");
+			
+			usuario = new Usuario();
+			usuario.setNombre(nombre);
+			usuario.setEmail(email);
+			usuario.setPassword(getMD5(password));
+			
+			usuarioDAO.save(usuario);
+			
+			acceso = index2;
+			break;
+			
 		case "create":
 			nombre = request.getParameter("nombre");
 			email = request.getParameter("email");

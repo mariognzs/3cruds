@@ -1,25 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@page import="nombredominio.modelsDAO.ConcesionarioDAO"%>
+<%@page import="nombredominio.models.Concesionario"%>
 <%@page import="nombredominio.modelsDAO.UsuarioDAO"%>
 <%@page import="nombredominio.models.Usuario"%>
 <%@page import="java.util.ArrayList"%>
-<%@ include file="../login-validation.jsp"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
-
-
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>INDEX USUARIOS</title>
-<link href="resources/css/style.css" type="text/css" rel="stylesheet">
+<title>EDIT CONCESIONARIO</title>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
 	<!--------------- CABECERA -------------------------------->
 	<header>
 		<div id="header">
-			<nav class=".alinearVertical">
+			<nav>
 				<div>
 					<a href="home.jsp"><img src="resources/img/logo.jpg"
 						height="100px"></a>
@@ -30,6 +27,7 @@
 						<li><a href="UsuariosController?action=index">USUARIOS </a></li>
 						<li><a href="CochesController?action=index">COCHES</a></li>
 						<li><a href="GarajesController?action=index">GARAJE</a></li>
+						<li><a href="ConcesionariosController?action=index">CONCESIONARIOS</a></li>
 						<li>|</li>
 						<%
 						Usuario usuario = new Usuario();
@@ -49,49 +47,26 @@
 	<!--------------- FIN CABECERA -------------------------------->
 	<div id="contenedorTablas">
 		<div class="tablas">
-			<h1>USUARIOS INDEX</h1>
+			<h1>USUARIO EDIT</h1>
+			<%
+			Concesionario garaje = (Concesionario) request.getAttribute("con");
+			%>
 
-			<table border="1">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Nombre</th>
-						<th>Mail</th>
-						<th>Password</th>
-						<th></th>
-						<th></th>
 
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					UsuarioDAO usuarioDAO = new UsuarioDAO();
-					ArrayList<Usuario> usuarios = usuarioDAO.all();
+			<form method="POST" action="ConcesionariosController?action=update">
 
-					for (int i = 0; i < usuarios.size(); i++) {
-						usuario = usuarios.get(i);
-					%>
+				<input type="hidden" name="id_concesionario"
+					value="<%=garaje.getId_concesionario()%>">
+				<h3>Nombre</h3>
+				<input type="text" name="nombre" value="<%=garaje.getNombre()%>">
+				<h3>Ciudad</h3>
+				<input type="text" name="ciudad" value="<%=garaje.getCiudad()%>">
+				<h3>Pais</h3>
+				<input type="text" name="pais" value="<%=garaje.getPais()%>">
+				<br>
+				<button type="subimit">Actualizar</button>
 
-					<tr>
-						<td><%=usuario.getId_usuario()%></td>
-						<td><%=usuario.getNombre()%></td>
-						<td><%=usuario.getEmail()%></td>
-						<td><%=usuario.getPassword()%></td>
-						<td><a
-							href="UsuariosController?action=edit&id_usuario=<%=usuario.getId_usuario()%>">
-								Edit </a></td>
-						<td><a
-							href="UsuariosController?action=delete&id_usuario=<%=usuario.getId_usuario()%>">
-								Delete </a></td>
-					</tr>
-					<%
-					}
-					%>
-				</tbody>
-			</table>
-			<button>
-				<a href="GarajesController?action=create">Crear Garaje</a>
-			</button>
+			</form>
 		</div>
 	</div>
 
@@ -107,7 +82,6 @@
 		</div>
 	</footer>
 	<!---------------------------------------- FIN FOOTER ------------------------------->
-
 
 </body>
 </html>

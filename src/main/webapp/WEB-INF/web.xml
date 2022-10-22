@@ -49,4 +49,14 @@
     <servlet-name>GarajesController</servlet-name>
     <url-pattern>/GarajesController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConcesionariosController</display-name>
+    <servlet-name>ConcesionariosController</servlet-name>
+    <servlet-class>nombredominio.controllers.ConcesionariosController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConcesionariosController</servlet-name>
+    <url-pattern>/ConcesionariosController</url-pattern>
+  </servlet-mapping>
 </web-app>

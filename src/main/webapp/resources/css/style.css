@@ -45,7 +45,7 @@ li a{
     background-color: black;
 }
 
- video{
+video{
     width:100%;
 
 }
@@ -62,6 +62,7 @@ footer{
 
 form{
     text-align: center;
+    margin: 20px;
 
 }
 
@@ -69,14 +70,36 @@ form{
     background-image: url(../img/fondoForm.jpg);
     background-repeat: no-repeat;
     background-size:100% ;
+    padding: 300px;
+}
 
+h3{
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+input{
+    width: 60%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.650);
+
+  }
+
+.letraGrande{
+    font-size:50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #contenedorForm{
-    border: 1 solid white;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.325);
-    padding: 300px;
+    background-color: rgba(0, 0, 0, 0.500);
+    padding: 20px;
+
+
 }
 
 .icon{
@@ -182,7 +205,9 @@ form{
     grid-row-end: 3;
 }
 
-#contenedor button{ 
+
+
+button{
     vertical-align: text-bottom;
     background-color: #910000;
     border: none;
@@ -196,6 +221,26 @@ form{
     margin: 4px 2px;
     cursor: pointer;
     margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+a{
+    color: red;
+}
+
+button a{
+    color: white;
+    text-decoration: none;
+}
+
+button:hover{
+    color: black !important;
+    background-color: white;
+}
+
+button:hover a{
+    color: black !important;
+    text-decoration: none;
 }
 
 #contenedor a{
@@ -204,3 +249,32 @@ form{
 
 }
 
+.border{
+    border: 1 soild white;
+}
+
+#bordeLogin{
+    border: 1 solid white;
+}
+
+.tablas{
+    display:flexbox;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    border: 1 solid white !important;
+    border-radius: 12px;
+    margin-top:15% ;
+    margin-bottom: 15%;
+}
+
+#contenedorTablas{
+    background-image: url(#);
+    background-repeat: no-repeat;
+    background-size:100% ;
+}
+
+table{
+    margin: auto;
+}
