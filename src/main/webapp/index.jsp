@@ -34,6 +34,19 @@
 			</nav>
 			<hr>
 		</div>
+
+		<div class="mobile-container">
+
+			<!-- Top Navigation Menu -->
+			<div class="topnav">
+				<img src="resources/img/logo.jpg" height="100px">
+				<div id="myLinks">
+					<a href="index.jsp">INICIO</a> <a href="login.jsp">LOGIN</a> <a
+						href="register.jsp">REGISTER</a>
+				</div>
+				<a href="javascript:void(0);" class="icono" onclick="navFunction()">
+				</a>
+			</div>
 	</header>
 
 	<video autoplay muted loop>
@@ -51,6 +64,8 @@
 				href="#"><img src="resources/img/logoWhatsApp.png"></a>
 		</div>
 	</footer>
+
+	<script type="text/javascript" src="resources/js/js.js"></script>
 
 </body>
 </html>
